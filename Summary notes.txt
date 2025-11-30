@@ -1,0 +1,73 @@
+GEN AI Course
+#vocab - inference: run the code
+Day 1:
+
+1) Setting up open ai: a) buy API key(by loading up 5 dollars) - Billing b) API Key create by clicking create and select project as Default project. Copy and save the key c) Create file called .env d) type: OPENAI_API_KEY=<paste key>(no "") and then save *(check whether api key starts with sk-).
+ 
+2) Parts of prompt -- 	a) message="<prompt>"  
+			b) messages = [{"role": "user", "content": message}]
+			c) openai = OpenAI()   (from openai import OpenAI)
+			d) response=openai.chat.completions.create(model="gpt-5-nano", messages=messages)
+			e) response.choices[0].message.content
+
+3) Types of prompt -- 	a) System prompt: specify and frame the overall prompt....the tone, the context, setting the scene
+				system_prompt= """
+				<prompt>
+				"""
+			b) User Prompt: what they should reply to.....the content
+				user_prompt= """
+				<prompt>
+				"""	
+			messages=[{"role":"system","content":system_prompt},{"role":"user","content":user_prompt+<you can add website or anything>}]
+
+Day 2:
+
+1) 3 dimensions : a) Models - Open-Source, Closed Source, Multi-modal, How to select, the architectures
+		  b) Tools - HuggingFace, LangChain, Gradio, Weights and Biases, Modal
+		  c) Techniques - APIs, Multi-shot prompting, RAG, Fine-tuning, Agentization
+
+2) Closed Source models/ frontiers models - you have to pay. a) GPT from OpenAI b) Claude from Anthropic c) Gemini from Google d) Grok from x.ai
+
+3) Open Source - a) llama from meta b) Mixtral from Mistral c) Qwen from Alibaba Cloud d) Gemma from Google e) Phi from Microsoft f) DeepSeek from DeepSeekAI g) GPT-OSS from OpenAI
+
+4) 3 ways to use model:  a) Chat Interface(like chatgpt)
+			 b) Cloud APIs - Framework like LangChain, From managed cloud services like amazon bedrock, azureML, google Vertex
+			 c) Download the code and run it- with huggingface, transformers library, with ollama to run locally.
+
+5) Endpoints - Technical foundations guide - http url that u use to call api request.(read guide)
+
+to call it: 
+import requests
+headers = {"Authorization":f"Bearer {api_key}","Content-Type":"application/json"}
+payload={"model": <>,"messages:[]}
+
+now send these to endpoints
+response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)  (#This is a post request)
+response.json()    ->> shows a json that has choices which has index 0 which has message and which has the content you want.
+response.json()["choices"][0]["message"]["content"]
+
+BUT THE ABOVE IS VERYYY CLUNKYY
+therefore open ai has a python client library - it is nothing more than a wrapper around making this exact call to http endpoint
+
+
+# now openAi's chat completion API allows to use other models as well (it became a standard) (for eg: google made an endpoint https:generativelanguage.googlrapis.com/v1beta/openai/)
+
+therefore: gemini = OpenAI(base_url = "https:generativelanguage.googlrapis.com/v1beta/openai/", api_key="")  [this is just a openai library]
+and the rest is same.
+
+Ollama
+requests.get("https://localhost:11434").content
+
+
+## deepseek has a smaller version called deepseek-r1:1.5 but this is not deepseek itself. they took qwen and trained with more data. this data was artificially made from the main deepseek model.
+
+
+
+
+
+
+
+
+
+
+
