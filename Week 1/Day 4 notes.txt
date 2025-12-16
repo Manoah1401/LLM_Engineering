@@ -1,0 +1,43 @@
+GPT - Generative Pretrained Transformer
+
+# LSTM - a RNN was used before transformer ( it is actually better than transformer but, its very slow and u can do parallel processing) - Transformer is a simplified version of LSTM ("Attention is all u need" paper by google)
+
+Prompt Engineering >>> Copilots >>> Context Engineering - RAG >>> Agentic AI - LLM controls the workflow(LLM may call other LLMs) - LLM in loop with access to tools - Claude Code - eg: booking appointment. The LLM calls itself for each task.
+
+# Parameters - more parameters means more intelligent and means more info has been absorbed by the model (more parameters mean more data can be used and will be absorbed)
+
+INFERENCE TIME SCALING(eg RAG) - #earlier everything used to be training time - increases parameters (heavy).
+# Reasoning trick - just don't give me output, give me the reasoning behind it - this is an example of inference time scaling (scale during running time) 
+# Another type is adding more information in the input sequence - eg adding ticket prices, so that it gets influenced by it
+
+TOKENS
+Earlier neural nets were trained at character level - predict next character in sequence - small vocab
+Next, trained off words and predict next word - but vocab is sooo huge that next in sequence could be anything hence some words gets omitted
+Therefore, a middle ground, Words are broken down in chunks known as tokens - manageable vocab - this is much efficient and is fast - elegantly handles word stems - 
+These tokens are passed as inputs 
+#Common words are given whole token - eg "is" "the" "all" "time"
+## space before is also included is token ie: " of" this is used to suggest a start of a new word
+### numbers are split into fragements of 3 digits - 3345666 - "334" "566" "6"
+#### roughly 1 token approx. 4 tokens or 1000 tokens is 750 words
+
+
+#every convo is completely stateless - check 002. tokenizer.ipynb to know why and how we deal with that
+# therefore, for every single convo you have to pay that much extra
+
+
+Context Window
+Max number of tokens a model can take as input. [It is not just the current text but also the previous msgs(as you know)]
+####### the model predicts token by token ie, if i ask what is my name?
+for first token context window - what is my name - predicts - "your"
+for second - what is my name + your - "name"
+for third - what is my name + your name - "is"
+for fourth then - what is my name + your name is - "Manoah"
+Therefore the context window is not only input but also the output (excluding last token)
+
+
+#multishot prompting - includes examples
+
+API cost - cost is based on the input token and the number of output tokens (also includes reasoning - even if u dont see it(eg in recent chatgpt)
+
+
+
