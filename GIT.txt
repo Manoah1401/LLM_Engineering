@@ -1,0 +1,66 @@
+GIT commands to know and how to set up git:
+
+1) In your account, create a repository with the desired name
+
+2) Check if git is present
+    git --version
+
+3) Authenticate your account
+    git config --global user.name "Your Name"
+    git config --global user.email "your_email@gmail.com"
+
+4) Clone the repository
+    git clone https://github.com/username/repository-name.git
+
+5) Move into the folder
+    cd repository-name
+
+6) Check Status
+    git status
+
+7) To create files
+    touch README.md
+
+8) Add Files to Staging Area
+        git add README.md 
+   or for all files
+        git add .
+### Staging means “These are the changes I want to save in my next commit.”
+
+9) Commit
+    git commit -m "Initial commit"
+
+10) Push - takes local commits and pushes into github repository
+    git push origin main
+
+11) To pull latest changes
+    git pull origin main
+
+12) Branches
+    a) Create
+        git branch <feature-branch>
+    b) Move into it
+        git checkout <feature-branch>
+    c) Push
+        git push origin <feature-branch>
+
+13) Merge the branches to main
+    a) Move into main
+        git checkout main
+    b) Merge
+        git merge <feature-branch>
+
+14) Delete branch after merging (To keep repo clean)
+    a) locally
+        git branch -d <feature-branch>
+    b) In github(remotely)
+        git push origin --delete <feature-branch>
+
+
+
+
+
+
+
+
+
